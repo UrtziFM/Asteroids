@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Asteroids Game</title>
+        <link rel="stylesheet" href="Styles.css" type="text/css">
+    </head>
+    <body>
+        <canvas id="Asteroids" style="display: none"></canvas>
+        <div id="load" class="screen" style="display: block">
+            Loading, please wait...
+        </div>
+        <div id="start" class="screen" style="display: none">
+            <img src="assets/asteroids-start-splash.png"/>
+            <button click="">Let's play</button>
+        </div>
+        <div id="end" class="screen" style="display: none">
+            <img src="assets/asteroids-gameover-splash.png"/>
+            <button click="">Let's play</button>
+        </div>
+        <script type="text/javascript" src="App.js"></script>
+    </body>
+    <button id="reload">Start</button>
+</html>
