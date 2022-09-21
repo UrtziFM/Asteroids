@@ -1,8 +1,8 @@
 class Gui {
 
     constructor() {
-        this.ctx = null;
         this.cnv = null;
+        this.ctx = null;
         this.resources = null;
         this.resourcesToLoad = 0;
     }
@@ -35,8 +35,9 @@ class Gui {
         });
     }
 
-    showScreen() {
-        // here
+    showScreen(id) {
+         this.closeAllScreens();
+         this.toggleScreen(id, true);
     }
 
 }
