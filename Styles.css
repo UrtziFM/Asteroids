@@ -8,6 +8,7 @@ body  {
 
 button  {
     outline: none;
+    border: none;
     border: collapse;
     border-radius: 8px;
     padding: 10px;
@@ -16,6 +17,11 @@ button  {
     width: 240px;
     font-size: 2em;
     cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    width: 30%;
 }
 
 button:hover  {

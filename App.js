@@ -1,9 +1,9 @@
 window.gui = new Gui();
 
 window.onload = function() {
-    console.log("Loading...");
+    console.log("loading...");
 }
 window.onresize = function() {
-    console.log("Resizing...");
+    console.log("resizing...");
     window.gui.resize();
 }

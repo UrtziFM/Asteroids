@@ -23,8 +23,8 @@ class Gui {
     }
 
     toggleScreen(id, toggle) {
-        let element = document.getElementById("id");
-        let display = (toggle) ? "block": "none";
+        let element = document.getElementById(id);
+        let display = (toggle) ? "block" : "none";
         element.style.display = display;
     }
 
@@ -40,4 +40,16 @@ class Gui {
          this.toggleScreen(id, true);
     }
 
+    launchIfReady() {
+        this.resourcesToLoad--;
+        if (this.resourcesToLoad == 0){
+            this.prepareCanvas();
+            this.showScreen("start");
+        }
+    }
+
+    beginLoadingImage(imgVar, fileName){
+        imgVar.onload = () => this.launchIfReady();
+        imgVar.src = fileName;
+    }
 }
