@@ -1,10 +1,11 @@
 class Gui {
 
-    constructor() {
+    constructor(game) {
         this.cnv = null;
         this.ctx = null;
         this.resources = null;
         this.resourcesToLoad = 0;
+        this.gameloop = new Gameloop(game);
     }
 
     resize(){
@@ -91,5 +92,11 @@ class Gui {
 
     getResources(){
         return this.resources;
+    }
+
+    startGame(){
+        this.prepareCanvas();
+        this.showScreen("canvas");
+        this.gameloop.start();
     }
 }
