@@ -6,7 +6,7 @@ class Fx {
     }
 
     init(){
-        this.cnv = document.getElementById("Canvas");
+        this.cnv = document.getElementById("canvas");
         this.ctx = this.cnv.getContext("2d");
     }
 
@@ -26,6 +26,18 @@ class Fx {
         this.ctx.arc(x, y, size, 0, Math.PI*2);
         this.ctx.fill();
     }
+
+    rotateAndDrawImage(image, atx, aty, angle){
+        if(image && this.ctx){
+            this.ctx.save();
+            this.ctx.translate(atx+image.width/2, aty+image.height/2);
+            this.ctx.rotate(angle);
+            this.ctx.drawImage(image, -image.width/2, image.height/2);
+            this.ctx.restore();
+        }
+    }
+
+
 
     
 }
