@@ -31,6 +31,7 @@ class Gameloop {
 
     update(){
         if(this.game){
+            this.game.update();
         }
     }
 
