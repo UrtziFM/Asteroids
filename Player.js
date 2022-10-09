@@ -18,8 +18,8 @@ class Player {
         this.fx.init();
         this.img = window.gui.getResource("player-img");
         this.laserSound = window.gui.getResource("laser-audio")
-        this.x = this.fx.cnv.width/2 - this.img.width/2;
-        this.y = this.fx.cnv.height/2 - this.img.height/2;
+        this.x = this.fx.cnv.width/2 - this.img.width*2;
+        this.y = this.fx.cnv.height/2 - this.img.height;
         this.thrust = { x:0, y:0 };
         this.angle = 270/180*Math.PI;
         this.rotation = 0;
