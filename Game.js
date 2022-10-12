@@ -3,13 +3,13 @@ class Game {
     constructor() {
         this.fx  = new Fx();
         this.player = new Player();
-        this.asteroid = new Asteroid();
+        this.asteroidService = new AsteroidService();
     }
 
     init() {
         this.fx.init();
         this.player.init();
-        this.asteroid.init();
+        this.asteroidService.init(8);
     }
 
     resize() {
@@ -18,12 +18,12 @@ class Game {
 
     update() {
         this.player.update();
-        this.asteroid.update();
+        this.asteroidService.update();
     }
 
     render() {
         this.fx.fillCanvas("#000");
         this.player.render();
-        this.asteroid.render();
+        this.asteroidService.render();
     }
 }

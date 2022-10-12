@@ -1,3 +1,31 @@
+class AsteroidService {
+
+    constructor(){
+        this.collection = [];
+    }
+
+    init(total){
+        this.collection = [];
+        for(let i = 0; i < total; i++){
+            let asteroid = new Asteroid();
+            asteroid.init();
+            this.collection.push(asteroid);
+        }
+    }
+
+    update(){
+        this.collection.forEach(a => {
+            a.update();
+        });
+    }
+
+    render(){
+        this.collection.forEach(a => {
+            a.render();
+        });
+    }
+}
+
 class Asteroid {
 
     constructor(){
