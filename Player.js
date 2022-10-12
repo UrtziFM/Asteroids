@@ -2,7 +2,7 @@ class Player {
 
     constructor(){
         this.fx = new Fx();
-        this.keyHandler = new KeyHandler;
+        this.keyHandler = new KeyHandler();
         this.img = null;
         this.laserSound = null;
         this.turnSpeed = 5;
