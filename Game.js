@@ -3,7 +3,7 @@ class Game {
     constructor() {
         this.fx  = new Fx();
         this.player = new Player();
-        this.asteroidService = new AsteroidService();
+        this.asteroidService = new AsteroidService(this.player);
     }
 
     init() {
