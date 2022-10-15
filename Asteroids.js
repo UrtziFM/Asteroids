@@ -1,8 +1,9 @@
 class AsteroidService {
 
-    constructor(player){
+    constructor(player, particles){
         this.collection = [];
         this.player = player;
+        this.particles = particles;
     }
 
     init(total){
@@ -17,7 +18,7 @@ class AsteroidService {
     update(){
         this.collection.forEach(a => {
             a.update();
-            a.checkForCollisionsWithPhasers(this.player.projectileService.collection);
+            a.checkForCollisionsWithPhasers(this.player.projectileService.collection, this.particles);
         });
     }
 
@@ -95,13 +96,16 @@ class Asteroid {
         return !(aLeftOfB || aRightOfB || aAboveB || aBelowB);
     }
 
-    checkForCollisionsWithPhasers(phasers){
-        phasers.forEach(p => {
-            if(this.hasCollidedWithEntity(p)){
-                this.collisionDetected();
-                p.active = false;
-                return;
-            }
-        });
+    checkForCollisionsWithPhasers(phasers, particles){
+        if(this.active) {
+            phasers.forEach(p => {
+                if(this.hasCollidedWithEntity(p)){
+                    this.collisionDetected();
+                    particles.spawn(16, this);
+                    p.active = false;
+                    return;
+                }
+            });
+        }
     }
 }
