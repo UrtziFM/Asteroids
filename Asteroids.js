@@ -9,7 +9,7 @@ class AsteroidService {
     init(total){
         this.collection = [];
         for(let i = 0; i < total; i++){
-            let asteroid = new Asteroid();
+            let asteroid = new Asteroid(1);
             asteroid.init();
             this.collection.push(asteroid);
         }
@@ -27,11 +27,22 @@ class AsteroidService {
             a.render();
         });
     }
+
+    spawn(size, total, owner){
+        for(let i = 0; i < total; i++){
+            let asteroid = new Asteroid(size);
+            asteroid.init();
+            asteroid.x = owner.x + owner.img.width/2;
+            asteroid.y = owner.y + owner.img.height/2;
+            this.collection.push(asteroid);
+        }
+    }
 }
 
 class Asteroid {
 
-    constructor(){
+    constructor(size){
+        this.size = size;
         this.fx = new Fx();
         this.img = null;
         this.boom = null;
@@ -46,7 +57,7 @@ class Asteroid {
 
     init(){
         this.fx.init();
-        this.img = window.gui.getResource("asteroid-large");
+        this.setAsteroidImg();
         this.boom = window.gui.getResource("boom-audio");
         this.x = 0 - this.img.width/2;
         this.y = 0 - this.img.height;
@@ -101,16 +112,35 @@ class Asteroid {
         return !(aLeftOfB || aRightOfB || aAboveB || aBelowB);
     }
 
-    checkForCollisionsWithPhasers(phasers, particles){
+    checkForCollisionsWithPhasers(phasers, particles, service){
         if(this.active) {
             phasers.forEach(p => {
                 if(this.hasCollidedWithEntity(p)){
                     this.collisionDetected();
+                    let nextSize = ++this.size;
+                    let total = Math.random() * 4;
+                   // if(nextSize <= 3){
+                   //     service.spawn(nextSize, total, this);
+                   // }
                     particles.spawn(16, this);
                     p.active = false;
                     return;
                 }
             });
+        }
+    }
+
+    setAsteroidImg(){
+        switch(this.size){
+            case 2:
+                this.img = window.gui.getResource("asteroid-img");
+                break;
+            case 3:
+                this.img = window.gui.getResource("asteroid-small");
+                break;
+            default:
+                this.img = window.gui.getResource("asteroid-large");
+                break;
         }
     }
 }
