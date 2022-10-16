@@ -34,6 +34,7 @@ class Asteroid {
     constructor(){
         this.fx = new Fx();
         this.img = null;
+        this.boom = null;
         this.x = 0;
         this.y = 0;
         this.angle = 0;
@@ -46,6 +47,7 @@ class Asteroid {
     init(){
         this.fx.init();
         this.img = window.gui.getResource("asteroid-img");
+        this.boom = window.gui.getResource("boom-audio");
         this.x = 0 - this.img.width/2;
         this.y = 0 - this.img.height;
         this.angle = Math.random()*Math.PI*2.0;
@@ -83,6 +85,9 @@ class Asteroid {
 
     collisionDetected(){
         this.active = false;
+        this.boom.pause();
+        this.boom.currenTime = 0;
+        this.boom.play();
     }
 
     hasCollidedWithEntity(entity){
