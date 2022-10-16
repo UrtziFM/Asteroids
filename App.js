@@ -7,6 +7,8 @@ window.onload = function() {
     window.gui.load([
         {id: "player-img", var: playerImg = document.createElement("img"), file: "assets/Player.png" },
         {id: "asteroid-img", var: asteroidImg =  document.createElement("img"), file: "assets/Asteroid.png" }, 
+        {id: "asteroid-large", var: asteroidLargeImg =  document.createElement("img"), file: "assets/Asteroid_large.png" },
+        {id: "asteroid-small", var: asteroidSmallImg =  document.createElement("img"), file: "assets/Asteroid_small.png" },
         {id: "laser-audio", var: laserAudio = document.createElement("audio"), file: "assets/Laser.mp3" }, 
         {id: "boom-audio", var: boomAudio = document.createElement("audio"), file: "assets/Boom.mp3" }
     ]);

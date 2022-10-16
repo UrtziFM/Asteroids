@@ -46,7 +46,7 @@ class Asteroid {
 
     init(){
         this.fx.init();
-        this.img = window.gui.getResource("asteroid-img");
+        this.img = window.gui.getResource("asteroid-large");
         this.boom = window.gui.getResource("boom-audio");
         this.x = 0 - this.img.width/2;
         this.y = 0 - this.img.height;
