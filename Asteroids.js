@@ -119,9 +119,9 @@ class Asteroid {
                     this.collisionDetected();
                     let nextSize = ++this.size;
                     let total = Math.random() * 4;
-                   // if(nextSize <= 3){
-                   //     service.spawn(nextSize, total, this);
-                   // }
+                    //if(nextSize <= 3){
+                    //    service.spawn(nextSize, total, this);
+                    //}
                     particles.spawn(16, this);
                     p.active = false;
                     return;
