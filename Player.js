@@ -1,9 +1,10 @@
 class Player {
 
-    constructor(){
+    constructor(particles){
         this.fx = new Fx();
         this.keyHandler = new KeyHandler();
         this.projectileService = new ProjectileService(this);
+        this.particles = particles;
         this.img = null;
         this.laserSound = null;
         this.turnSpeed = 5;
@@ -16,6 +17,12 @@ class Player {
         this.rotation = 0;
         this.reload = 10;
         this.frames = 0;
+
+        this.alive = 1;
+        this.dying = 2;
+        this.dead = 3;
+        this.state = this.alive;
+        this.dyingTime = 240;
     }
 
     init(){
@@ -23,7 +30,8 @@ class Player {
         this.keyHandler.init();
         this.projectileService.init();
         this.img = window.gui.getResource("player-img");
-        this.laserSound = window.gui.getResource("laser-audio")
+        this.laserSound = window.gui.getResource("laser-audio");
+        this.boom = window.gui.getResource("boom-audio");
         this.x = this.fx.cnv.width/2 - this.img.width*2;
         this.y = this.fx.cnv.height/2 - this.img.height;
         this.thrust = { x:0, y:0 };
@@ -31,6 +39,9 @@ class Player {
         this.rotation = 0;
         this.reload = 10;
         this.frames = 0;
+
+        this.state = this.alive;
+        this.dyingTime = 240;
     }
 
     update(){
@@ -80,5 +91,14 @@ class Player {
     render(){
         this.projectileService.render();
         this.fx.rotateAndDrawImage(this.img, this.x, this.y, this.angle);
+    }
+
+    kill(){
+        this.state = this.dying;
+        this.particles.spawn(16, this);
+        this.boom.pause();
+        this.boom.currentTime = 0;
+        this.boom.play();
+
     }
 }
