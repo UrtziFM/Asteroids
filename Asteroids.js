@@ -9,7 +9,7 @@ class AsteroidService {
     init(total){
         this.collection = [];
         for(let i = 0; i < total; i++){
-            let asteroid = new Asteroid(3);
+            let asteroid = new Asteroid(3); // it's hardcode to 3 (small) when spawn is resolved change to 1
             asteroid.init();
             this.collection.push(asteroid);
         }
@@ -120,7 +120,7 @@ class Asteroid {
                     this.collisionDetected();
                     let nextSize = ++this.size;
                     let total = Math.random() * 4;
-                    if(nextSize <= 3){
+                    if(nextSize <= 3){ // it's not  working, service proprieties are not define
                         service.spawn(nextSize, total, this);
                     }
                     particles.spawn(16, this);
