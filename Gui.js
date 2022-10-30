@@ -99,4 +99,9 @@ class Gui {
         this.showScreen("canvas");
         this.gameloop.start();
     }
+
+    stopGame(){
+        this.showScreen("end");
+        this.gameloop.stop();
+    }
 }

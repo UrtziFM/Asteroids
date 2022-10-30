@@ -33,7 +33,7 @@ class Player {
         this.laserSound = window.gui.getResource("laser-audio");
         this.boom = window.gui.getResource("boom-audio");
         this.x = this.fx.cnv.width/2 - this.img.width*2;
-        this.y = this.fx.cnv.height/2 - this.img.height;
+        this.y = this.fx.cnv.height/2 - this.img.height*2;
         this.thrust = { x:0, y:0 };
         this.angle = 270/180*Math.PI;
         this.rotation = 0;
@@ -45,6 +45,16 @@ class Player {
     }
 
     update(){
+
+        if(this.state == this.dead){
+            window.gui.stopGame();
+            return;
+        }
+        if(this.state == this.dying){
+            this.dyingTime--;
+            this.state = (this.dyingTime > 0) ? this.dying : this.dead;
+            return;
+        }
         this.frames++;
         this.rotation = 0;
         this.thrust.x = this.thrust.x*this.friction;
@@ -90,7 +100,9 @@ class Player {
 
     render(){
         this.projectileService.render();
-        this.fx.rotateAndDrawImage(this.img, this.x, this.y, this.angle);
+        if(this.state == this.alive){
+            this.fx.rotateAndDrawImage(this.img, this.x, this.y, this.angle);
+        }
     }
 
     kill(){

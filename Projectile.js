@@ -77,8 +77,8 @@ class Projectile {
     fire(){
         this.angle = this.owner.angle;
         this.alive = this.lifeSpan;
-        this.x = this.owner.x + this.owner.img.width/2;
-        this.y = this.owner.y + this.owner.img.height/2;
+        this.x = this.owner.x - this.owner.img.width/2;
+        this.y = this.owner.y - this.owner.img.height/2;
         this.active = true;
     }
 }

@@ -19,6 +19,7 @@ class AsteroidService {
         this.collection.forEach(a => {
             a.update();
             a.checkForCollisionsWithPhasers(this.player.projectileService.collection, this.particles);
+            a.checkForCollisionsWithPlayer(this.player);
         });
     }
 
@@ -127,6 +128,19 @@ class Asteroid {
                     return;
                 }
             });
+        }
+    }
+
+    checkForCollisionsWithPlayer(player){
+        let active = (player.state == player.alive) ? true: false;
+        let entity = {
+            x: player.x,
+            y: player.y,
+            size: player.img.width,
+            active: active
+            }
+            if(this.hasCollidedWithEntity(entity)){
+                player.kill();
         }
     }
 
