@@ -14,14 +14,13 @@ button  {
     padding: 10px;
     color: #fff;
     background-color: #2ecc71;
-    width: 240px;
+    width: 320px;
     font-size: 2em;
     cursor: pointer;
     position: absolute;
     left: 50%;
     top: 80%;
     transform: translate(-50%, -50%);
-    width: 30%;
 }
 
 button:hover  {
