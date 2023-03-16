@@ -104,4 +104,9 @@ class Gui {
         this.showScreen("end");
         this.gameloop.stop();
     }
+
+    winGame(){
+        this.showScreen("win");
+        this.gameloop.stop();
+    }
 }
