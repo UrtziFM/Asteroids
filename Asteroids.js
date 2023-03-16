@@ -4,10 +4,12 @@ class AsteroidService {
         this.collection = [];
         this.player = player;
         this.particles = particles;
+        this.score = null;
     }
 
     init(total){
         this.collection = [];
+        this.score = 50;
         for(let i = 0; i < total; i++){
             let asteroid = new Asteroid(3); // it's hardcode to 3 (small) when spawn is resolved change to 1
             asteroid.init();
@@ -20,7 +22,7 @@ class AsteroidService {
             a.update();
             a.checkForCollisionsWithPhasers(this.player.projectileService.collection, this.particles);
             a.checkForCollisionsWithPlayer(this.player);
-        });
+        }); 
     }
 
     render(){
@@ -86,7 +88,7 @@ class Asteroid {
             if(this.y + this.img.height < 0) {
                 this.y = this.fx.cnv.height;
             }
-        }
+        } 
     }
 
     render(){
@@ -119,7 +121,7 @@ class Asteroid {
                 if(this.hasCollidedWithEntity(p)){
                     this.collisionDetected();
                     let nextSize = ++this.size;
-                    let total = Math.random() * 4;
+                    let total = Math.random() * 4;   
                     if(nextSize <= 3){ // it's not  working, service proprieties are not define
                         service.spawn(nextSize, total, this);
                     }

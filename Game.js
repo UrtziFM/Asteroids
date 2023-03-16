@@ -29,5 +29,6 @@ class Game {
         this.player.render();
         this.particleService.render();
         this.asteroidService.render();
+        this.fx.userScore();
     }
 }

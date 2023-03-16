@@ -3,11 +3,13 @@ class Fx {
     constructor(){
         this.cnv = null;
         this.ctx = null;
+        this.score = null;
     }
 
     init(){
         this.cnv = document.getElementById("canvas");
         this.ctx = this.cnv.getContext("2d");
+        this.score = 50;
     }
 
     fillCanvas(color){
@@ -37,7 +39,9 @@ class Fx {
         }
     }
 
-
-
-    
+    userScore(){
+        this.ctx.font = "20px Arial";
+        this.ctx.fillStyle = "WHITE";
+        this.ctx.fillText("Asteroids: "+this.score, this.cnv.width/40, this.cnv.height/20);
+    }
 }
