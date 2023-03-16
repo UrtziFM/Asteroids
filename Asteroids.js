@@ -4,7 +4,6 @@ class AsteroidService {
         this.collection = [];
         this.player = player;
         this.particles = particles;
-        this.score = null;
     }
 
     init(total){
@@ -55,7 +54,7 @@ class Asteroid {
         this.speed = 0;
         this.rotation = 0.0;
         this.turnrate = 0.0;
-        this.active = false;
+        this.active = false
     }
 
     init(){
