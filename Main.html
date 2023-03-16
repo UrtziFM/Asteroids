@@ -23,11 +23,22 @@
         </div>
         <div id="start" class="screen" style="display: none">
             <img src="assets/asteroids-start-splash.png"/>
+            <div class="startScreen"><u>Instructions:</u><br>·Kill 50 asteroids to defeat UrtziAI<br>·Use your keyboard to move the spaceship
+            <br>·Be fast and shoot them</div>
             <button onclick="window.gui.startGame()">Let's play my friend!</button>
         </div>
         <div id="end" class="screen" style="display: none">
             <img src="assets/asteroids-gameover-splash.png"/>
             <button onclick="window.gui.startGame()">Let's play again!</button>
         </div>
+        <div id="win" class="screen" style="display: none">
+            <img src="assets/asteroids-gamewin-splash.png"/>
+            <button onclick="window.gui.startGame()">Let's play again!</button>
+        </div>
     </body>
+    <footer>
+        <div>
+          <small>Copyright &copy; Urtzi Arana Santamaria</small>
+        </div>
+    </footer>
 </html>
