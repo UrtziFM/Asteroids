@@ -9,7 +9,7 @@ class Fx {
     init() {
         this.cnv = document.getElementById("canvas");
         this.ctx = this.cnv.getContext("2d");
-        this.score = 50;
+        this.score = 20;
     }
 
     fillCanvas(color) {
@@ -42,6 +42,6 @@ class Fx {
     userScore(){
         this.ctx.font = "20px Arial";
         this.ctx.fillStyle = "WHITE";
-        this.ctx.fillText("Asteroids: "+this.score, this.cnv.width/40, this.cnv.height/20);
+        this.ctx.fillText("First-Order Ships: "+this.score, this.cnv.width/40, this.cnv.height/20);
     }
 }

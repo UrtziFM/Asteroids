@@ -2,6 +2,7 @@ class AsteroidService {
 
     constructor(player, particles) {
         this.collection = [];
+        this.score = null;
         this.player = player;
         this.particles = particles;
     }
@@ -13,6 +14,7 @@ class AsteroidService {
             asteroid.init();
             this.collection.push(asteroid);
         }
+        this.score = this.collection.length;
     }
 
     update() {

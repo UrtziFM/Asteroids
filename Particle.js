@@ -61,7 +61,7 @@ class Particle {
             this.y += Math.sin(this.angle) * this.speed;
             this.alive--;
             this.active = this.alive > 0 ? true : false;
-        }
+        } 
     }
 
     render() {
