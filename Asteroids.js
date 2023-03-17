@@ -8,7 +8,6 @@ class AsteroidService {
 
     init(total){
         this.collection = [];
-        this.score = 50;
         for(let i = 0; i < total; i++){
             let asteroid = new Asteroid(3); // it's hardcode to 3 (small) when spawn is resolved change to 1
             asteroid.init();
@@ -54,7 +53,7 @@ class Asteroid {
         this.speed = 0;
         this.rotation = 0.0;
         this.turnrate = 0.0;
-        this.active = false
+        this.active = false;
     }
 
     init(){
