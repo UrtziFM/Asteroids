@@ -1,11 +1,11 @@
-class Gameloop {
+class GameLoop {
 
-    constructor(game){
+    constructor(game) {
         this.loop = null;
         this.game = game;
     }
 
-    start(){
+    start() {
         this.init();
         this.loop = setInterval(() => {
             this.update();
@@ -13,30 +13,30 @@ class Gameloop {
         }, 1000/60);
     }
 
-    stop(){
+    stop() {
         clearInterval(this.loop);
     }
 
-    init(){
-        if(this.game){
+    init() {
+        if ( this.game ) {
             this.game.init();
         }
     }
 
-    resize(){
-        if(this.game){
+    resize() {
+        if ( this.game ) {
             this.game.resize();
         }
     }
 
-    update(){
-        if(this.game){
+    update() {
+        if ( this.game ) {
             this.game.update();
         }
     }
 
-    render(){
-        if(this.game){
+    render() {
+        if ( this.game ) {
             this.game.render();
         }
     }

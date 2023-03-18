@@ -1,39 +1,40 @@
-class ProjectileService{
+class ProjectileService {
 
-    constructor(owner){
+    constructor(owner) {
         this.owner = owner;
         this.max = 10;
         this.pointer = 0;
         this.collection = [];
     }
 
-    init(){
+    init() {
         this.pointer = 0;
         this.collection = [];
-        for (let i = 0; i < this.max; i++){
+        for ( let i = 0; i < this.max; i++ ) {
             let p = new Projectile(this.owner);
             p.init();
             this.collection.push(p);
         }
     }
 
-    update(){
+    update() {
         this.collection.forEach(p => {
             p.update();
         });
     }
 
-    render(){
+    render() {
         this.collection.forEach(p => {
             p.render();
         });
     }
 
-    fire(){
-        if(this.pointer < this.max){
+    fire() {
+        if ( this.pointer < this.max ) {
             this.collection[this.pointer].fire();
             this.pointer++;
-        } else {
+        }
+        else {
             this.pointer = 0;
         }
     }
@@ -41,7 +42,7 @@ class ProjectileService{
 
 class Projectile {
 
-    constructor(owner){
+    constructor(owner) {
         this.owner = owner;
         this.angle = this.owner.angle;
         this.speed = 15;
@@ -54,31 +55,31 @@ class Projectile {
         this.fx = new Fx();
     }
 
-    init(){
+    init() {
         this.active = false;
         this.fx.init();
     }
 
-    update(){
-        if (this.active){
-            this.x += Math.cos(this.angle)*this.speed;
-            this.y += Math.sin(this.angle)*this.speed;
+    update() {
+        if ( this.active ) {
+            this.x += Math.cos(this.angle) * this.speed;
+            this.y += Math.sin(this.angle) * this.speed;
             this.alive--;
             this.active = this.alive > 0 ? true : false;
         }
     }
 
-    render(){
-        if(this.active){
-            this.fx.drawCircle(this.x, this.y, this.size, "limegreen");
+    render() {
+        if ( this.active ) {
+            this.fx.drawCircle(this.x,this.y,this.size,"limegreen");
         }
     }
 
-    fire(){
+    fire() {
         this.angle = this.owner.angle;
         this.alive = this.lifeSpan;
         this.x = this.owner.x + this.owner.img.width/2;
-        this.y = this.owner.y - this.owner.img.height/2;
+        this.y = this.owner.y + this.owner.img.height/2;
         this.active = true;
     }
 }

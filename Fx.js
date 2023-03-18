@@ -1,47 +1,52 @@
 class Fx {
 
-    constructor(){
+    constructor() {
         this.cnv = null;
         this.ctx = null;
-        this.score = null;
+        this.time = null;
     }
 
-    init(){
+    init() {
         this.cnv = document.getElementById("canvas");
         this.ctx = this.cnv.getContext("2d");
-        this.score = 50;
+        this.time = 3000;
     }
 
-    fillCanvas(color){
-        this.drawRect(0, 0, this.cnv.width, this.cnv.height, color);
+    fillCanvas(color) {
+        this.drawRect(0,0, this.cnv.width,this.cnv.height, color);
     }
 
-    drawRect(x, y, width, height, color){
+    drawRect(x,y, width,height, color) {
         this.ctx.fillStyle = color;
-        this.ctx.fillRect(x, y, width, height);
+        this.ctx.fillRect(x,y, width,height);
         this.ctx.fill();
     }
 
-    drawCircle(x, y, size, color){
+    drawCircle(x,y, size, color) {
         this.ctx.beginPath();
         this.ctx.fillStyle = color;
-        this.ctx.arc(x, y, size, 0, Math.PI*2);
+        this.ctx.arc(x,y, size, 0, Math.PI*2);
         this.ctx.fill();
     }
 
-    rotateAndDrawImage(image, atx, aty, angle){
-        if(image && this.ctx){
+    rotateAndDrawImage(image, atx,aty, angle) {
+        if ( image && this.ctx ) {
             this.ctx.save();
             this.ctx.translate(atx+image.width/2, aty+image.height/2);
             this.ctx.rotate(angle);
-            this.ctx.drawImage(image, -image.width/2, image.height/2);
+            this.ctx.drawImage(image, -image.width/2,-image.height/2);
             this.ctx.restore();
         }
     }
 
-    userScore(){
+    survivalTime(){
         this.ctx.font = "20px Arial";
         this.ctx.fillStyle = "WHITE";
-        this.ctx.fillText("Asteroids: "+this.score, this.cnv.width/40, this.cnv.height/20);
+        this.ctx.fillText("Survival Time: "+this.time, this.cnv.width/40, this.cnv.height/20); 
+        this.time--;
+        if (this.time == 0){
+            window.gui.winGame();
+            return;
+            }
     }
 }
