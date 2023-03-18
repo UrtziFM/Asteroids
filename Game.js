@@ -11,7 +11,7 @@ class Game {
         this.fx.init();
         this.player.init();
         this.particleService.init();
-        this.asteroidService.init(20);
+        this.asteroidService.init(30);
     }
 
     resize() {
@@ -28,6 +28,6 @@ class Game {
         this.player.render();
         this.asteroidService.render();
         this.particleService.render();
-        this.fx.userScore();
+        this.fx.survivalTime();
     }
 }

@@ -3,13 +3,13 @@ class Fx {
     constructor() {
         this.cnv = null;
         this.ctx = null;
-        this.score = null;
+        this.time = null;
     }
 
     init() {
         this.cnv = document.getElementById("canvas");
         this.ctx = this.cnv.getContext("2d");
-        this.score = 20;
+        this.time = 3000;
     }
 
     fillCanvas(color) {
@@ -39,9 +39,14 @@ class Fx {
         }
     }
 
-    userScore(){
+    survivalTime(){
         this.ctx.font = "20px Arial";
         this.ctx.fillStyle = "WHITE";
-        this.ctx.fillText("First-Order Ships: "+this.score, this.cnv.width/40, this.cnv.height/20);
+        this.ctx.fillText("Survival Time: "+this.time, this.cnv.width/40, this.cnv.height/20); 
+        this.time--;
+        if (this.time == 0){
+            window.gui.winGame();
+            return;
+            }
     }
 }
